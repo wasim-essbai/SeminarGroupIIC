@@ -107,12 +107,33 @@
 	\cleardoublepage
 	\pagenumbering{arabic}
 	
-	\chapter*{Introduction}
+	\section*{Introduction}
 	\addcontentsline{toc}{chapter}{Introduction}
 	
+	In this article, a technique for capacitance measurement is discussed, based on the work of Kung et al.\cite{Kung1988}.
+
+	The approach presented gives a digital output, that could be converted to analog by a DAC(\textit{Digital to Analog Converter}) for further processings. This technique allows to reach high measurment resolution since it deletes errors due to: Parasitic
+	capacitances, op-amp offset or charge injection from MOS switch. In figure \Fig~\ref{fig:CompleteCircuit} is showed the circuit that performs the described functions.
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\linewidth]{ImageFiles/CompleteCircuit}
+		\caption{Capacitance measurement circuit.}
+		\label{fig:CompleteCircuit}
+	\end{figure}
+	
+	\section*{Ideal Analysis}
+	\addcontentsline{toc}{chapter}{Ideal Analysis}
+	
+	A first analysis is performed assuming an ideal circuit, so there is no charge injection ($Q_{s3} = 0$), no parasitic capacitance ($C_P = 0$) and ideal op-amp (offset $V_{os} = 0$ and $\infty$ gain). The circuit becomes as showed in figure \Fig~\ref{fig:IdealCircuit}.
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\linewidth]{ImageFiles/IdealCircuit}
+		\caption{Capacitance measurement circuit without nonidealities.}
+		\label{fig:IdealCircuit}
+	\end{figure}
 	
 	
-	\bibliographystyle{unsrt}
+	\bibliographystyle{ieeetr}
 	
 	\bibliography{./OtherFiles/Bibliography}
 	
