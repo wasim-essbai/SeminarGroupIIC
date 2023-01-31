@@ -16,12 +16,19 @@
 \usepackage{import}
 \usepackage{float}
 
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+
 \usepackage{todonotes}
 \usepackage{verbatim}
+
+\usepackage{siunitx}
 
 \newcommand{\Fig}[0]{Fig.}
 \newcommand{\Eq}[0]{Eq.}
 
+\newcommand\mykern{\ifmmode\kern0pt\else\kern0.08em\fi}
 \renewcommand\epigraphflush{flushright}
 \renewcommand\epigraphsize{\normalsize}
 \setlength\epigraphwidth{0.7\textwidth}
@@ -29,6 +36,7 @@
 \definecolor{titlepagecolor}{cmyk}{1,.60,0,.40}
 
 \DeclareFixedFont{\titlefont}{T1}{ppl}{b}{it}{0.3in}
+\DeclareSIPrefix{\femto}{f\mykern}{-15}
 
 \makeatletter                       
 \def\printauthor{%                  
@@ -113,16 +121,24 @@
 	\section*{Introduction}
 	\addcontentsline{toc}{chapter}{Introduction}
 	
-	In this article, a technique for capacitance measurement is discussed, based on the work of Kung et al.\cite{Kung1988}. The technique is an particular implementation of the charge redistribution method \cite{4314753}
+	In this article, a technique for capacitance measurement is discussed, based on the work of Kung et al.\cite{Kung1988}. The technique is an particular implementation of the charge redistribution method \cite{4314753}.
 
 	The presented approach gives a digital output, that could be converted to analog by a DAC(\textit{Digital to Analog Converter}) for further processings. This technique allows to reach high measurment resolution since it deletes errors due to: Parasitic capacitances, op-amp offset or charge injection from MOS switch. In figure \Fig~\ref{fig:CompleteCircuit} is showed the circuit that performs the described functions.
 	\begin{figure}[h]
 		\centering
-		\includegraphics[width=0.5\linewidth]{ImageFiles/CompleteCircuit}
-		\caption{Capacitance measurement circuit.}
-		\label{fig:CompleteCircuit}
+		\begin{subfigure}{.5\textwidth}
+			\centering
+			\includegraphics[width=0.6\linewidth]{ImageFiles/CompleteCircuit}
+			\caption{Capacitance measurement circuit.}
+			\label{fig:CompleteCircuit}
+		\end{subfigure}%
+		\begin{subfigure}{.5\textwidth}
+			\centering
+			\includegraphics[width=0.6\linewidth]{ImageFiles/IdealCircuit}
+			\caption{Capacitance measurement circuit without nonidealities.}
+			\label{fig:IdealCircuit}
+		\end{subfigure}
 	\end{figure}
-	
 	\section*{Ideal Analysis}
 	\addcontentsline{toc}{chapter}{Ideal Analysis}
 	
@@ -133,7 +149,13 @@
 	
 	\import{./TextFiles/}{non_ideal_analysis.tex}
 		
-		
+	\section*{Conclusions}
+	\addcontentsline{toc}{chapter}{Conclusion}	
+	
+	It has been demonstrated that this technique can measure capacitance differences with a resolution of \SI{0.05}{\femto\farad} on capacitors in the 20-100 \si{\femto\farad} range, with parasitic capacitances around 100 times larger\cite{Kung1988}. The significant nonideal effects can be corrected through calibration. Furthermore, digital averaging can improve resolution, but at the cost of longer measurement times.
+	
+	This is a simple circuit and inherently compatible with digital signal processing. This makes it hightly suited for capacitance difference measurement in digital systems.
+	
 	\bibliographystyle{ieeetr}
 	
 	\bibliography{./OtherFiles/Bibliography}
